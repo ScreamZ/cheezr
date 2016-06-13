@@ -12,6 +12,7 @@
   "dependencies": {
     "babel-runtime": "^6.0.0",
     "materialize-css": "^0.97.6",
+    "node-uuid": "^1.4.7",
     "vue": "^1.0.21",
     "vue-material-components": "^0.2.0",
     "vue-router": "^0.7.13"
