@@ -4,7 +4,11 @@ const ID = 'cart_id'
 export default {
   state: {
     id: null,
-    content: {},
+    content: {
+      'parmigiano': 3,
+      'prosciutto': 1,
+      'aceto': 5
+    },
     userId: null,
     deliveryId: null,
     shipped: false,
@@ -18,7 +22,7 @@ export default {
     } else {
       this.state.id = localStorage.getItem(ID)
     }
-  }
+  },
 
   addProduct(id, qty) {
     if(!this.state.content[id]) {
@@ -26,17 +30,17 @@ export default {
     } else {
       this.state.content[id] += qty
     }
-  }
+  },
 
   setUser(id) {
     this.state.userId = id
-  }
+  },
 
   setDeliveryId(id) {
     this.state.deliveryId = id
-  }
+  },
 
   setPaymentId(id) {
     this.state.paymentId = id
-  }
+  },
 }

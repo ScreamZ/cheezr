@@ -3,7 +3,6 @@
     <span slot="title" class="activator">
         {{title}}<md-icon right>more_vert</md-icon>
     </span>
-    <!-- wave effect directive -->
     <div slot="image" class="waves-effect waves-block waves-light">
         <img class="activator" v-bind:src="image">
     </div>

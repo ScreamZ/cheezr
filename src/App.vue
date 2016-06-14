@@ -1,14 +1,17 @@
 <template>
   <div class="container">
-    <h1>Viens acheter de la Came</h1>
+    <Navbar></Navbar>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
+import Navbar from './components/Navbar'
 
 export default {
-  components: {},
+  components: {
+    Navbar
+  },
   replace: false
 }
 </script>
