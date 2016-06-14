@@ -22,9 +22,9 @@ const state = {
   },
   cartId: null,
   cartContent: {
-    'parmigiano': 3,
-    'prosciutto': 1,
-    'aceto': 5
+    'parmigiano': 0,
+    'prosciutto': 0,
+    'aceto': 0
   },
   userId: null,
   deliveryId: null,
