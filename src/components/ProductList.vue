@@ -13,15 +13,16 @@
 
 <script>
 import ProductItem from './ProductItem'
-import ProductStore from '../stores/products'
 
 export default {
   components: {
     ProductItem,
   },
-  data() {
-    return {
-      productList: ProductStore.state.products
+  vuex: {
+    getters: {
+      productList: (state) => {
+        return state.products
+      }
     }
   }
 }

@@ -18,17 +18,19 @@
 
 <script>
 import ProductItem from './ProductInCartItem'
-import CartStore from '../stores/cart'
-import ProductStore from '../stores/products'
 
 export default {
   components: {
     ProductItem,
   },
-  data() {
-    return {
-      cartList: CartStore.state.content,
-      productList: ProductStore.state.products
+  vuex: {
+    getters: {
+      cartList: (state) => {
+        return state.cartContent
+      },
+      productList: (state) => {
+        return state.products
+      }
     }
   }
 }

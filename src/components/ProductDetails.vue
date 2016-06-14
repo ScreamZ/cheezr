@@ -1,14 +1,14 @@
 <template>
   <product-item
     :title="product.title"
-    :product-id="$key"
+    :product-id="$route.params.id"
     :supporting-text="product.description"
     :image="product.image"
   ></product-item>
 </template>
 
 <script>
-import ProductStore from '../stores/products'
+// import ProductStore from '../stores/products'
 import ProductItem from './ProductItem'
 
 export default {
@@ -16,9 +16,16 @@ export default {
   components: {
     ProductItem
   },
-  data() {
-    return {
-      product: ProductStore.state.products[this.$route.params.id]
+  // data() {
+  //   return {
+  //     product: ProductStore.state.products[this.$route.params.id]
+  //   }
+  // },
+  vuex: {
+    getters: {
+      product: (state) => {
+        return state.products[this.$route.params.id]
+      }
     }
   }
 }

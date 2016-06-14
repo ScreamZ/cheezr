@@ -3,6 +3,8 @@ import VueMaterialComponents from 'vue-material-components'
 import VueRouter from 'vue-router'
 import configRouter from './routes'
 import App from './App'
+import Vuex from 'vuex'
+import store from './store'
 
 import 'materialize-css/dist/css/materialize.css'
 import 'vue-material-components/dist/vue-material-components.css'
@@ -13,4 +15,9 @@ Vue.use(VueRouter)
 export var router = new VueRouter()
 configRouter(router)
 
-router.start(App, 'body')
+router.start({
+  store,
+  components: { App }
+  },
+  'body'
+)
