@@ -2,7 +2,6 @@
   <md-collection-list-item class="avatar">
     <img v-bind:src="image" alt="" class="circle">
     <span class="title">{{title}}</span>
-    <p>First Line <br> Second Line </p>
     <a slot="secondary-content" href="#!">
       {{qty}}
     </a>
