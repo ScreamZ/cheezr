@@ -7,8 +7,7 @@
         <img v-link="{ name: 'productDetails', params: { id: productId }}" alt="Click here for more details" class="activator" v-bind:src="image">
     </div>
     <p>
-        <!-- <a v-link="{ name: 'productDetails', params: { id: productId }}">Click here for more details</a> -->
-        <md-button class="waves-light ">
+        <md-button class="waves-light" v-on:click="addProductToCart(productId)">
           <md-icon left>shopping_cart</md-icon>Add to Cart
         </md-button>
     </p>
@@ -19,7 +18,7 @@
         <p>
             {{supportingText}}
         </p>
-        <md-button class="waves-light">
+        <md-button class="waves-light" v-on:click="addProductToCart(productId)">
           <md-icon left>shopping_cart</md-icon>Add to Cart
         </md-button>
     </div>
@@ -27,8 +26,15 @@
 </template>
 
 <script>
+import { addProductToCart } from '../actions'
+
 export default {
   props: ['title', 'supportingText', 'image', 'productId'],
+  vuex: {
+    actions: {
+      addProductToCart
+    }
+  }
 }
 </script>
 
