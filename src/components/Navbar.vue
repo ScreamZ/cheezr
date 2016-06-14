@@ -1,11 +1,12 @@
 <template>
-  <md-navbar title="Cheezr - viens acheter ta came" right>
-      <md-nav-item v-link="{ name: 'cart' }"><md-icon left>shopping_cart</md-icon><md-badge alert="items">4</md-badge></md-nav-item>
+  <md-navbar title="Cheezr" right>
+      <md-nav-item v-link="{ name: 'cart' }"><md-icon left>shopping_cart</md-icon><md-badge alert="items">{{total}}</md-badge></md-nav-item>
   </md-navbar>
 </template>
 
 <script>
 export default {
+  props: ['total'],
   data () {
     return {
     }

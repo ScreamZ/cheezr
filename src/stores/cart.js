@@ -43,4 +43,11 @@ export default {
   setPaymentId(id) {
     this.state.paymentId = id
   },
+
+  getTotalItems() {
+    var self = this;
+    return Object.keys(this.state.content).reduce((previous, key) => {
+      return previous + self.state.content[key];
+    }, 0)
+  }
 }
