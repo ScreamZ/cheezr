@@ -2,15 +2,20 @@
   <md-collection-list-item class="avatar">
     <img v-bind:src="image" alt="" class="circle">
     <span class="title">{{title}}</span>
-    <a slot="secondary-content" href="#!">
-      {{qty}}
+    <a slot="secondary-content">
+      <qty-buttons :qty="qty"></qty-buttons>
     </a>
   </div>
 </template>
 
 <script>
+import QtyButtons from './QtyButtons'
+
 export default {
   props: ['title', 'qty', 'productId', 'image'],
+  components: {
+    QtyButtons
+  }
 }
 </script>
 
