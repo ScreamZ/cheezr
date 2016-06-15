@@ -9,7 +9,7 @@
         v-on:decrease="removeProductFromCart(productId)"
       ></qty-buttons>
     </a>
-  </div>
+  </md-collection-list-item>
 </template>
 
 <script>
