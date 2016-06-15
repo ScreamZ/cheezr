@@ -3,18 +3,26 @@
     <img v-bind:src="image" alt="" class="circle">
     <span class="title">{{title}}</span>
     <a slot="secondary-content">
-      <qty-buttons :qty="qty"></qty-buttons>
+      <qty-buttons
+        :qty="qty"
+        v-on:increase="addProductToCart(productId)"
+        v-on:decrease="removeProductFromCart(productId)"
+      ></qty-buttons>
     </a>
   </div>
 </template>
 
 <script>
 import QtyButtons from './QtyButtons'
+import * as actions from '../actions'
 
 export default {
   props: ['title', 'qty', 'productId', 'image'],
   components: {
     QtyButtons
+  },
+  vuex: {
+    actions
   }
 }
 </script>

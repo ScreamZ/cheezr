@@ -1,18 +1,22 @@
 <template>
   <div class="valign-wrapper">
-    <md-icon class="right valign" v-on:click="removeProductFromCart(productId)">remove</md-icon>
-    <input type="text" name="qty" value="{{qty}}" size="1" max="20" min="0" class="left"></input>
-    <md-icon class="left valign" v-on:click="addProductToCart(productId)">add</md-icon>
+    <md-icon class="right valign" v-on:click="decrease">remove</md-icon>
+    <input type="text" name="qty" value="{{qty}}" size="1" max="20" min="0" class="left" readonly></input>
+    <md-icon class="left valign" v-on:click="increase">add</md-icon>
   </div>
 </template>
 
 <script>
-import * as actions from '../actions'
-
 export default {
-  props: ['qty'],
-  vuex: {
-    actions
+  props: ['qty', 'productId'],
+  methods: {
+    increase: function() {
+      this.$dispatch('increase')
+    },
+    decrease: function() {
+      this.$dispatch('decrease')
+    }
+
   }
 }
 </script>
@@ -20,5 +24,8 @@ export default {
 <style scoped>
 input {
   text-align: center;
+}
+i.material-icons {
+  cursor: pointer;
 }
 </style>
