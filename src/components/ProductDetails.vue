@@ -8,7 +8,6 @@
 </template>
 
 <script>
-// import ProductStore from '../stores/products'
 import ProductItem from './ProductItem'
 
 export default {
@@ -16,15 +15,15 @@ export default {
   components: {
     ProductItem
   },
-  // data() {
-  //   return {
-  //     product: ProductStore.state.products[this.$route.params.id]
-  //   }
-  // },
+  computed: {
+    product() {
+      return this.productList[this.$route.params.id]
+    }
+  },
   vuex: {
     getters: {
-      product: (state) => {
-        return state.products[this.$route.params.id]
+      productList: (state) => {
+        return state.products
       }
     }
   }
