@@ -21,11 +21,7 @@ const state = {
     }
   },
   cartId: null,
-  cartContent: {
-    'parmigiano': 0,
-    'prosciutto': 0,
-    'aceto': 0
-  },
+  cartContent: {},
   userId: null,
   deliveryId: null,
   shipped: false,
@@ -33,8 +29,26 @@ const state = {
 }
 
 const mutations = {
+  ADD_PRODUCT_TO_CART (state, id, qty) {
+    if (!state.cartContent[id]) {
+      Vue.set(state.cartContent, id, qty)
+    } else {
+      state.cartContent[id] += qty
+    }
+  },
+  REMOVE_PRODUCT_FROM_CART (state, id, qty) {
+    if (state.cartContent[id] > 0) {
+      Vue.delete(state.cartContent, id)
+    } else {
+      state.cartContent[id] -= qty
+    }
+  },
   UPDATE_PRODUCT_IN_CART (state, id, qty) {
-    state.cartContent[id] += qty
+    if (!state.cartContent[id]) {
+      Vue.set(state.cartContent, id, qty)
+    } else {
+      state.cartContent[id] = qty
+    }
   }
 }
 
