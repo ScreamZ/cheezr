@@ -1,5 +1,5 @@
 <template>
-  <md-collection-list-item class="avatar">
+  <md-collection-item class="avatar">
     <img v-bind:src="image" alt="" class="circle">
     <span class="title">{{title}}</span>
     <a slot="secondary-content">
@@ -9,7 +9,7 @@
         v-on:decrease="removeProductFromCart(productId)"
       ></qty-buttons>
     </a>
-  </md-collection-list-item>
+  </md-collection-item>
 </template>
 
 <script>

@@ -1,13 +1,13 @@
 <template>
   <h1>Ton panier plein de came</h1>
-  <md-collection v-for="productQty in cartList">
-    <product-item
+  <div class="collection">
+    <product-item v-for="productQty in cartList"
       :title="productList[$key].title"
       :product-id="$key"
       :qty="productQty"
       :image="productList[$key].image"
     ></product-item>
-  </md-collection>
+  </div>
   <md-button v-link="{ name: 'products' }" class="waves-light">
     <md-icon left>fast_rewind</md-icon>Back to products
   </md-button>
