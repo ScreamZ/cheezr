@@ -1,0 +1,30 @@
+{
+  "cheezr": {
+    "products": [
+      {"index": {"_id": "parmigiano"}},
+      {
+        "title": "Parmigiano 26-28 mois",
+        "description": "Le meilleur fromage du monde",
+        "imageUrl": "http://www.springbankcheesecrowfoot.com/wordpress/wp-content/uploads/2012/12/Parmigiano-Reggiano.jpg"
+      },
+      {"index": {"_id": "prosciutto"}},
+      {
+        "title": "Jambon de Parme",
+        "description": "Le meilleur jambon du monde",
+        "imageUrl": "http://storage.aicod.it/portale/academiabarilla/view/1200/prosciuttodiparmaDOP-34.JPG"
+      },
+      {"index": {"_id": "aceto"}},
+      {
+        "title": "Vinaigre Balsamique de Modène",
+        "description": "Le meilleur vinaigre du monde",
+        "imageUrl": "http://www.visitmodena.it/it/immagini/balsamico.jpg"
+      }
+    ],
+    "carts": [
+      {"index": {"_id": "dummy_cart"}},
+      {
+        "content": []
+      }
+    ]
+  }
+}
