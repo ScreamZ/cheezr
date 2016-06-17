@@ -28,6 +28,10 @@ export const updateProductInCart = function (store, id, qty) {
   })
 }
 
+export const displayError = function (message, ) {
+
+}
+
 function syncCartWithServer(id, content, rollbackCb) {
   kuzzle
     .dataCollectionFactory(CARTS_COLLECTION)
