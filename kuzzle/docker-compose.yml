@@ -31,4 +31,4 @@ redis:
 elasticsearch:
   image: kuzzleio/elasticsearch:2.2
   volumes:
-    - "./db-data/:/usr/share/elasticsearch/data/"
+    - "./db-data/:/opt/elasticsearch/data/"
