@@ -18,8 +18,14 @@ export const removeProductFromCart = function (store, id) {
   })
 }
 
-export const updateProductInCart = function ({store, dispatch}, id, qty) {
-  dispatch('UPDATE_PRODUCT_IN_CART', id, qty)
+export const updateProductInCart = function (store, id, qty) {
+  let oldQty = store.state.cartContent[id]
+
+  store.dispatch('UPDATE_PRODUCT_IN_CART', id, qty)
+
+  syncCartWithServer(CART_ID, store.state.cartContent, () => {
+    store.dispatch('UPDATE_PRODUCT_IN_CART', id, oldQty)
+  })
 }
 
 function syncCartWithServer(id, content, rollbackCb) {
@@ -30,7 +36,7 @@ function syncCartWithServer(id, content, rollbackCb) {
     }, (err, res) => {
       if (err) {
         console.error(err);
-        // TODO show error in the UI and rollback mutation
+        // TODO show error in the UI
         if (rollbackCb) {
           rollbackCb()
         }
