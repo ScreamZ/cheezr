@@ -21,7 +21,6 @@ kuzzle:
     - proxy:api
   volumes:
     - "./fixtures.json:/fixtures.json"
-    - "./.kuzzlerc:/var/app/.kuzzlerc"
   environment:
     - fixtures=/fixtures.json
 
