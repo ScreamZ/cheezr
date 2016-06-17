@@ -23,7 +23,17 @@
     "carts": [
       {"index": {"_id": "dummy_cart"}},
       {
+        "deliveryId": null,
+        "userId": "anonymous",
+        "paymentId": null,
+        "shipped": false,
         "content": []
+      }
+    ],
+    "deliveries": [
+      {"index": {"_id": "dummy_delivery"}},
+      {
+        "carts": []
       }
     ]
   }
