@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import { addProductToCart } from '../actions'
+import { addProductToCart } from '../vuex/modules/cart/actions'
 
 export default {
   props: ['title', 'supportingText', 'image', 'productId'],

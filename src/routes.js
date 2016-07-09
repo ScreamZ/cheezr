@@ -18,4 +18,6 @@ export default function (router) {
       component: Cart
     }
   })
+
+  return router
 }

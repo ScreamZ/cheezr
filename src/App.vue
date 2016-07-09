@@ -1,12 +1,13 @@
 <template>
   <div class="container">
-    <Navbar :total="totalItemsInCarts" ></Navbar>
+    <Navbar :total="totalItemsInCart" ></Navbar>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
 import Navbar from './components/Navbar'
+import { totalItemsInCart } from './vuex/modules/cart/getters'
 
 export default {
   components: {
@@ -15,11 +16,7 @@ export default {
   replace: false,
   vuex: {
     getters: {
-      totalItemsInCarts: (state) => {
-        return Object.keys(state.cartContent).reduce((previous, key) => {
-          return previous + state.cartContent[key];
-        }, 0)
-      }
+      totalItemsInCart
     }
   }
 }

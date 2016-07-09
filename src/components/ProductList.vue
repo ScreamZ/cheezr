@@ -13,6 +13,7 @@
 
 <script>
 import ProductItem from './ProductItem'
+import { productList } from '../vuex/modules/products/getters'
 
 export default {
   components: {
@@ -20,9 +21,7 @@ export default {
   },
   vuex: {
     getters: {
-      productList: (state) => {
-        return state.products
-      }
+      productList
     }
   }
 }

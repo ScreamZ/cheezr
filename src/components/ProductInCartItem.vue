@@ -14,7 +14,7 @@
 
 <script>
 import QtyButtons from './QtyButtons'
-import * as actions from '../actions'
+import * as actions from '../vuex/modules/cart/actions'
 
 export default {
   props: ['title', 'qty', 'productId', 'image'],
