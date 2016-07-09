@@ -19,7 +19,8 @@ module.exports = merge(baseWebpackConfig, {
   plugins: [
     new webpack.DefinePlugin({
       'process.env': config.dev.env,
-      '__BACKEND_HOST': '192.168.99.100'
+      'BACKEND_HOST': JSON.stringify(process.env.BACKEND_HOST || 'kuzzle'),
+      'BACKEND_PORT': JSON.stringify(process.env.BACKEND_PORT || '7512')
     }),
     // https://github.com/glenjamin/webpack-hot-middleware#installation--usage
     new webpack.optimize.OccurenceOrderPlugin(),

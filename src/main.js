@@ -9,8 +9,6 @@ import 'vue-material-components/dist/vue-material-components.css'
 
 Vue.use(VueMaterialComponents)
 
-console.log(JSON.stringify(__BACKEND_HOST));
-
 router.start({
   store,
   components: { App }
