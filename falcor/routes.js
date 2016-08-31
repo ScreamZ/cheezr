@@ -1,30 +1,53 @@
 var Router = require('falcor-router');
 var Promise = require('promise');
+var Kuzzle = require('kuzzle-sdk');
 
 var jsonGraph = require('falcor-json-graph');
 var $ref = jsonGraph.ref;
 var $error = jsonGraph.error;
 
+var kuzzle = new Kuzzle('http://localhost:7512', {defaultIndex: 'cheezr'})
+
 var CheezrRouterBase = Router.createClass([
   {
     route: "productsById[{integers:productIds}]['title', 'description', 'imageUrl']",
     get: function (pathSet) {
-      return new Promise(function (resolve, reject) {
-          resolve([{
-              path: ['productsById', 0, 'title'],
-              value: 'Parmigiano 26 mesi'
-            },
-            {
-              path: ['productsById', 0, 'description'],
-              value: 'Bande de nazes'
-            },
-            {
-              path: ['productsById', 0, 'imageUrl'],
-              value: 'https://cdn.meme.am/images/300x/15579139.jpg'
-            }
-          ]),
-          reject('An error occurred while fetching the requested products')
-      })
+      return new Promise((resolve, reject) => {
+        kuzzle.dataCollectionFactory('products', 'cheezr')
+          .advancedSearchPromise({})
+          .then((res) => {
+            var formattedResult = []
+            res.documents.forEach((product, index) => {
+                pathSet[2].forEach(key => {
+                  if (!product.content[key]) return
+                  formattedResult.push({
+                    path: ['productsById', index, key],
+                    value: product.content[key]
+                  })
+                })
+            })
+            resolve(formattedResult)
+          })
+          .catch((err) => {
+            reject('An error occurred while fetching the requested products')
+          })
+        })
+      // new Promise(function (resolve, reject) {
+      //     resolve([{
+      //         path: ['productsById', 0, 'title'],
+      //         value: 'Parmigiano 26 mesi'
+      //       },
+      //       {
+      //         path: ['productsById', 0, 'description'],
+      //         value: 'Bande de nazes'
+      //       },
+      //       {
+      //         path: ['productsById', 0, 'imageUrl'],
+      //         value: 'https://cdn.meme.am/images/300x/15579139.jpg'
+      //       }
+      //     ]),
+      //     reject('An error occurred while fetching the requested products')
+      // })
     }
   }
 ]);

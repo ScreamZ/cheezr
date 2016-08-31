@@ -5,6 +5,6 @@ import 'kuzzle-sdk-login-oauth-popup'
 const DEFAULT_INDEX = 'cheezr'
 const KUZZLE_URL = `http://localhost:${BACKEND_PORT}`
 
-var kuzzle = new Kuzzle(KUZZLE_URL, {defaultIndex: DEFAULT_INDEX});
+window.kuzzle = new Kuzzle(KUZZLE_URL, {defaultIndex: DEFAULT_INDEX});
 
-export default kuzzle;
+export default window.kuzzle;
