@@ -23,9 +23,11 @@
     "materialize-css": "^0.97.6",
     "node-uuid": "^1.4.7",
     "promise": "^7.1.1",
+    "rx": "^4.1.0",
     "vue": "^1.0.21",
     "vue-material-components": "^0.2.0",
     "vue-router": "^0.7.13",
+    "vue-rx": "git+https://git@github.com/xbill82/vue-rx.git",
     "vuex": "^0.6.3"
   },
   "devDependencies": {

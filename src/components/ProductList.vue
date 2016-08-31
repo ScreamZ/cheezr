@@ -16,6 +16,7 @@ import ProductItem from './ProductItem'
 import { productList } from '../vuex/modules/products/getters'
 
 export default {
+  name: 'ProductList',
   components: {
     ProductItem,
   },
