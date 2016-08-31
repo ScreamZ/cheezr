@@ -1,6 +1,8 @@
 var path = require('path')
 var express = require('express')
+var bodyParser = require('body-parser')
 var webpack = require('webpack')
+var FalcorServer = require('falcor-express')
 var config = require('../config')
 var proxyMiddleware = require('http-proxy-middleware')
 var webpackConfig = process.env.NODE_ENV === 'testing'
@@ -55,6 +57,13 @@ app.use(hotMiddleware)
 // serve pure static assets
 var staticPath = path.posix.join(config.build.assetsPublicPath, config.build.assetsSubDirectory)
 app.use(staticPath, express.static('./static'))
+
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// Simple middleware to handle get/post
+app.use('/model.json', FalcorServer.dataSourceRoute(function(req, res) {
+    return require('../falcor/routes')()
+}));
 
 module.exports = app.listen(port, function (err) {
   if (err) {
