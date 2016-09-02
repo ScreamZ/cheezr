@@ -1,7 +1,6 @@
 <template>
   <div class="container">
     <Navbar :total="totalItemsInCart"></Navbar>
-    {{description}}
     <router-view></router-view>
   </div>
 </template>
@@ -10,11 +9,6 @@
 import Navbar from './components/Navbar'
 import { totalItemsInCart } from './vuex/modules/cart/getters'
 import falcorModel from './services/falcor'
-
-let loadModel = async function() {
-  let value = await falcorModel.getValue('productsById[0]["title"]')
-  return value
-}
 
 export default {
   name: 'App',
@@ -29,11 +23,8 @@ export default {
   },
   data() {
     return {
-      description: falcorModel.getValue('productsById[0]["title"]')
+      productsById: falcorModel.get('productsById[0..2]["description", "title", "imageUrl"]')
     }
-  },
-  ready() {
-    loadModel().then((value) => {console.log('async ' + value)})
   }
 }
 </script>

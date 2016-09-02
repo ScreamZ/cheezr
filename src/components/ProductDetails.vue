@@ -1,32 +1,44 @@
 <template>
-  <product-item
-    :title="product.title"
-    :product-id="$route.params.id"
-    :supporting-text="product.description"
-    :image="product.image"
-  ></product-item>
+  <div v-if="product">
+    <product-item
+      :title="product.title"
+      :product-id="$route.params.id"
+      :supporting-text="product.description"
+      :image="product.imageUrl"
+    ></product-item>
+  </div>
 </template>
 
 <script>
 import ProductItem from './ProductItem'
+import falcorModel from '../services/falcor'
+import rxMixin from '../mixins/rx-mixin'
 
 export default {
-  props: ['title', 'supportingText', 'image'],
+  name: 'ProductDetails',
   components: {
     ProductItem
   },
   computed: {
     product() {
-      return this.productList[this.$route.params.id]
+      if (this.productModel) {
+        return this.productModel.json.productsById[this.$route.params.id]
+      }
+      return {}
     }
   },
-  vuex: {
-    getters: {
-      productList: (state) => {
-        return state.products
-      }
+  data() {
+    return {
+      productModel: falcorModel.get([
+        'productsById',
+        this.$route.params.id,
+        ["description", "title", "imageUrl"]
+      ])
     }
-  }
+  },
+  mixins: [
+    rxMixin
+  ]
 }
 </script>
 

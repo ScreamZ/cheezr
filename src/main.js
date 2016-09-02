@@ -1,14 +1,18 @@
 import Vue from 'vue'
 import VueRx from 'vue-rx'
-import VueMaterialComponents from 'vue-material-components'
+import jQuery from 'jquery'
 import App from './App'
 import store from './vuex/store'
 import router from './services/router'
 
+import 'font-awesome/css/font-awesome.css'
 import 'materialize-css/dist/css/materialize.css'
-import 'vue-material-components/dist/vue-material-components.css'
 
-Vue.use(VueMaterialComponents)
+import { loadModel } from '../falcor/play-with-falcor'
+
+window.jQuery = window.$ = jQuery
+require('materialize-css/dist/js/materialize')
+
 Vue.use(VueRx)
 
 router.start({
