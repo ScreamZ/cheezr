@@ -12,7 +12,7 @@ var formatResult = require('./format-data')
 var CheezrRouterBase = Router.createClass([
   {
     // Query chunk to match
-    route: "productsById[{integers:productIds}]['title', 'description', 'imageUrl']",
+    route: "productsById[{keys:productIds}]['title', 'description', 'imageUrl']",
 
     // Query action (get, set, call)
     get: function (pathSet) {
@@ -22,7 +22,13 @@ var CheezrRouterBase = Router.createClass([
 
         // Here, it's up to us to define how we retrieve the data
         kuzzle.dataCollectionFactory('products', 'cheezr')
-          .advancedSearchPromise({})
+          .advancedSearchPromise({
+            query: {
+              ids: {
+                values: pathSet.productIds
+              }
+            }
+          })
           .then((res) => {
             resolve(
 
@@ -31,7 +37,7 @@ var CheezrRouterBase = Router.createClass([
             )
           })
           .catch((err) => {
-            reject('An error occurred while fetching the requested products')
+            reject(new Error('An error occurred while fetching the requested products'))
           })
         })
     }
