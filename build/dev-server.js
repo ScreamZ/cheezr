@@ -58,12 +58,7 @@ app.use(hotMiddleware)
 var staticPath = path.posix.join(config.build.assetsPublicPath, config.build.assetsSubDirectory)
 app.use(staticPath, express.static('./static'))
 
-app.use(bodyParser.urlencoded({ extended: false }));
-
-// Simple middleware to handle get/post
-app.use('/model.json', FalcorServer.dataSourceRoute(function(req, res) {
-    return require('../falcor/routes')()
-}));
+require('../falcor/falcor-express')(app)
 
 module.exports = app.listen(port, function (err) {
   if (err) {

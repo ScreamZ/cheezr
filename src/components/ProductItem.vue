@@ -1,7 +1,7 @@
 <template>
   <div class="card sticky-action">
     <div class="card-image waves-effect waves-block waves-light">
-      <img v-link="{ name: 'productDetails', params: { id: productId }}" alt="Click here for more details" class="activator" v-bind:src="image">
+      <img v-link="{ name: 'productDetails', params: { id: productId }}" alt="Click here for more details" class="activator" :src="localImgUrl">
     </div>
     <div class="card-content">
       <span class="card-title activator grey-text text-darken-4">{{title}}<i class="material-icons right">more_vert</i></span>
@@ -34,6 +34,11 @@ export default {
   vuex: {
     actions: {
       addProductToCart
+    }
+  },
+  computed: {
+    localImgUrl() {
+      return 'static/' + this.image
     }
   }
 }
