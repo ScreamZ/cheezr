@@ -8,8 +8,6 @@ import router from './services/router'
 import 'font-awesome/css/font-awesome.css'
 import 'materialize-css/dist/css/materialize.css'
 
-import { loadModel } from '../falcor/play-with-falcor'
-
 window.jQuery = window.$ = jQuery
 require('materialize-css/dist/js/materialize')
 

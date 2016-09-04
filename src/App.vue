@@ -8,7 +8,6 @@
 <script>
 import Navbar from './components/Navbar'
 import { totalItemsInCart } from './vuex/modules/cart/getters'
-import falcorModel from './services/falcor'
 
 export default {
   name: 'App',
@@ -19,11 +18,6 @@ export default {
   vuex: {
     getters: {
       totalItemsInCart
-    }
-  },
-  data() {
-    return {
-      productsById: falcorModel.get('productsById[0..2]["description", "title", "imageUrl"]')
     }
   }
 }

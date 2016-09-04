@@ -1,6 +1,7 @@
 import ProductList from './components/ProductList'
 import ProductDetails from './components/ProductDetails'
 import Cart from './components/Cart'
+import PlayWithFalcor from './components/PlayWithFalcor'
 
 export default function (router) {
   router.map({
@@ -16,6 +17,10 @@ export default function (router) {
     '/cart': {
       name: 'cart',
       component: Cart
+    },
+    '/falcor': {
+      name: 'playWithFalcor',
+      component: PlayWithFalcor
     }
   })
 
