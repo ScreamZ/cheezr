@@ -6,6 +6,7 @@ import store from './vuex/store'
 import router from './services/router'
 
 import 'font-awesome/css/font-awesome.css'
+import 'material-design-icons/iconfont/material-icons.css'
 import 'materialize-css/dist/css/materialize.css'
 
 window.jQuery = window.$ = jQuery
