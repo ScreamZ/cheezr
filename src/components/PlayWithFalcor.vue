@@ -5,7 +5,7 @@
 <script>
 import falcorModel from '../services/falcor'
 
-export const loadModel = async function(falcorModel) {
+let loadModel = async function(falcorModel) {
   let value = await falcorModel.get('productsById[0]["description", "title", "imageUrl"]')
   jlog(value)
   return value

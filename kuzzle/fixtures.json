@@ -5,19 +5,31 @@
       {
         "title": "Parmigiano 26-28 mois",
         "description": "Le meilleur fromage du monde",
-        "imageUrl": "http://www.springbankcheesecrowfoot.com/wordpress/wp-content/uploads/2012/12/Parmigiano-Reggiano.jpg"
+        "imageUrl": "formaggio.jpg",
+        "price": "15",
+        "origin": "Parma",
+        "uselessField": "foobar",
+        "anotherUselessField": "YOLO"
       },
       {"index": {"_id": "prosciutto"}},
       {
         "title": "Jambon de Parme",
         "description": "Le meilleur jambon du monde",
-        "imageUrl": "http://storage.aicod.it/portale/academiabarilla/view/1200/prosciuttodiparmaDOP-34.JPG"
+        "imageUrl": "prosciutto.jpg",
+        "origin": "Parma",
+        "price": "30",
+        "uselessField": "foobar",
+        "anotherUselessField": "YOLO"
       },
       {"index": {"_id": "aceto"}},
       {
         "title": "Vinaigre Balsamique de Modène",
         "description": "Le meilleur vinaigre du monde",
-        "imageUrl": "http://www.visitmodena.it/it/immagini/balsamico.jpg"
+        "imageUrl": "aceto.jpg",
+        "price": "7",
+        "origin": "Modena",
+        "uselessField": "foobar",
+        "anotherUselessField": "YOLO"
       }
     ],
     "carts": [

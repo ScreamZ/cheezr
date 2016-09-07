@@ -6,6 +6,7 @@
           :product-id="$key"
           :supporting-text="product.description"
           :image="product.imageUrl"
+          :price="product.price"
         ></product-item>
       </div>
     </div>
@@ -32,7 +33,9 @@ export default {
   },
   data() {
     return {
-      productListModel: falcorModel.get('productsById[0..2]["description", "title", "imageUrl"]')
+      productListModel: falcorModel.get(
+        'productsById["parmigiano", "prosciutto", "aceto"]["description", "title", "imageUrl"]'
+      )
     }
   },
   mixins: [

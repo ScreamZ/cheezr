@@ -12,7 +12,7 @@ var formatResult = require('./format-data')
 var CheezrRouterBase = Router.createClass([
   {
     // Query chunk to match
-    route: "productsById[{keys:productIds}]['title', 'description', 'imageUrl']",
+    route: "productsById[{keys:productIds}]['title', 'description', 'imageUrl', 'price']",
 
     // Query action (get, set, call)
     get: function (pathSet) {
