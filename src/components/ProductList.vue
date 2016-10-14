@@ -5,7 +5,7 @@
           :title="product.title"
           :product-id="key"
           :supporting-text="product.description"
-          :image="product.image"
+          :image="product.imageUrl"
           :price="product.price"
         ></product-item>
       </div>
