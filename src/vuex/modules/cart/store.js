@@ -10,25 +10,25 @@ const state = {
 }
 
 const mutations = {
-  ADD_PRODUCT_TO_CART (state, id, qty) {
-    if (!state.cartContent[id]) {
-      Vue.set(state.cartContent, id, qty)
+  ADD_PRODUCT_TO_CART (state, payload) {
+    if (!state.cartContent[payload.id]) {
+      Vue.set(state.cartContent, payload.id, payload.qty)
     } else {
-      state.cartContent[id] += qty
+      state.cartContent[payload.id] += payload.qty
     }
   },
-  REMOVE_PRODUCT_FROM_CART (state, id, qty) {
-    if (state.cartContent[id] > 0) {
-      Vue.delete(state.cartContent, id)
+  REMOVE_PRODUCT_FROM_CART (state, payload) {
+    if (state.cartContent[payload.id] > 0) {
+      Vue.delete(state.cartContent, payload.id)
     } else {
-      state.cartContent[id] -= qty
+      state.cartContent[payload.id] -= payload.qty
     }
   },
-  UPDATE_PRODUCT_IN_CART (state, id, qty) {
-    if (!state.cartContent[id]) {
-      Vue.set(state.cartContent, id, qty)
+  UPDATE_PRODUCT_IN_CART (state, payload) {
+    if (!state.cartContent[payload.id]) {
+      Vue.set(state.cartContent, payload.id, payload.qty)
     } else {
-      state.cartContent[id] = qty
+      state.cartContent[payload.id] = payload.qty
     }
   }
 }

@@ -7,7 +7,7 @@
     </div>
     <div class="card-content">
       <span class="card-title activator grey-text text-darken-4">{{title}}<i class="material-icons right">more_vert</i></span>
-      <p v-if="price">{{price}}€</p>
+      <p v-if="price" @click.prevent="addProductToCart(productId)">{{price}}€</p>
     </div>
     <div class="card-reveal">
       <span class="card-title grey-text text-darken-4">{{title}}<i class="material-icons right">close</i></span>
@@ -25,6 +25,7 @@
 
 <script>
 import MdButton from './Materialize/mdButton'
+import { mapActions } from 'vuex'
 
 export default {
   name: 'ProductItem',
@@ -35,6 +36,13 @@ export default {
   computed: {
     localImgUrl () {
       return 'static/' + this.image
+    }
+  },
+  methods: {
+    ...mapActions(['addProductToCart']),
+    addToCart () {
+      console.log('hsy hp!')
+      this.addProductToCart(this.productId)
     }
   }
 }

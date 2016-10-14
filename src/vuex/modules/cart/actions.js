@@ -20,27 +20,27 @@ function syncCartWithServer (id, content, rollbackCb) {
 }
 
 export const addProductToCart = function (store, id) {
-  store.dispatch('ADD_PRODUCT_TO_CART', id, 1)
+  store.commit('ADD_PRODUCT_TO_CART', {id, qty: 1})
 
-  syncCartWithServer(CART_ID, store.state.cart.cartContent, () => {
-    store.dispatch('REMOVE_PRODUCT_FROM_CART', id, 1)
+  syncCartWithServer(CART_ID, store.state.cartContent, () => {
+    store.commit('REMOVE_PRODUCT_FROM_CART', {id, qty: 1})
   })
 }
 
 export const removeProductFromCart = function (store, id) {
-  store.dispatch('REMOVE_PRODUCT_FROM_CART', id, 1)
+  store.commit('REMOVE_PRODUCT_FROM_CART', {id, qty: 1})
 
-  syncCartWithServer(CART_ID, store.state.cart.cartContent, () => {
-    store.dispatch('ADD_PRODUCT_TO_CART', id, 1)
+  syncCartWithServer(CART_ID, store.state.cartContent, () => {
+    store.commit('ADD_PRODUCT_TO_CART', {id, qty: 1})
   })
 }
 
 export const updateProductInCart = function (store, id, qty) {
-  let oldQty = store.state.cart.cartContent[id]
+  let oldQty = store.state.cartContent[id]
 
-  store.dispatch('UPDATE_PRODUCT_IN_CART', id, qty)
+  store.commit('UPDATE_PRODUCT_IN_CART', {id, qty})
 
-  syncCartWithServer(CART_ID, store.state.cart.cartContent, () => {
-    store.dispatch('UPDATE_PRODUCT_IN_CART', id, oldQty)
+  syncCartWithServer(CART_ID, store.state.cartContent, () => {
+    store.commit('UPDATE_PRODUCT_IN_CART', {id, qty: oldQty})
   })
 }
