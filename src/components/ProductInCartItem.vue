@@ -1,7 +1,12 @@
 <template>
-  <md-collection-item class="avatar">
-    <img v-bind:src="image" alt="" class="circle">
-    <span class="title">{{title}}</span>
+  <ul class="collection">
+    <li class="collection-item avatar">
+      <img v-bind:src="image" alt="" class="circle">
+      <span class="title">{{title}}</span>
+    </li>
+  </ul>
+  <!-- <md-collection-item class="avatar">
+    
     <a slot="secondary-content">
       <qty-buttons
         :qty="qty"
@@ -9,20 +14,16 @@
         v-on:decrease="removeProductFromCart(productId)"
       ></qty-buttons>
     </a>
-  </md-collection-item>
+  </md-collection-item> -->
 </template>
 
 <script>
-import QtyButtons from './QtyButtons'
-import * as actions from '../vuex/modules/cart/actions'
+import { mapActions } from 'vuex'
 
 export default {
   props: ['title', 'qty', 'productId', 'image'],
-  components: {
-    QtyButtons
-  },
-  vuex: {
-    actions
+  methods: {
+    ...mapActions(['addProductToCart', 'removeProductFromCart'])
   }
 }
 </script>
