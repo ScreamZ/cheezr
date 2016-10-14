@@ -1,33 +1,27 @@
 proxy:
-  image: kuzzleio/proxy:alpine
+  image: kuzzleio/proxy:1.0.0-RC6
   ports:
-    - "7511:7511"
-    - "7512:7512"
-
-bo:
-  image: kuzzleio/bo:1.0.0-RC4
-  ports:
-    - "3000:3000"
-  links:
-    - proxy:kuzzle
-  environment:
-    - KUZZLE_URL
+    - "7511-7513:7511-7513"
 
 kuzzle:
-  image: kuzzleio/kuzzle:1.0.0-RC4
+  image: kuzzleio/kuzzle:1.0.0-RC7
   links:
     - elasticsearch
     - redis
-    - proxy:api
-  volumes:
-    - "./fixtures.json:/fixtures.json"
+    - proxy
   environment:
+    - kuzzle_services__db__host=elasticsearch
+    - kuzzle_services__internalCache__node__host=redis
+    - kuzzle_services__memoryStorage__node__host=redis
+    - kuzzle_services__proxyBroker__host=proxy
     - fixtures=/fixtures.json
+  volumes:
+    - "./fixtures.json:/fixtures.json"    
 
 redis:
-  image: redis:3.0-alpine
+  image: redis:3.2-alpine
 
 elasticsearch:
-  image: kuzzleio/elasticsearch:2.2
+  image: kuzzleio/elasticsearch:2.3.4
   volumes:
     - "./db-data/:/opt/elasticsearch/data/"
