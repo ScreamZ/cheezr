@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import * as actions from './actions'
 
 const state = {
   cartId: null,
@@ -32,7 +33,17 @@ const mutations = {
   }
 }
 
+const getters = {
+  totalItemsInCart: state => {
+    return Object.keys(state.cartContent).reduce((previous, key) => {
+      return previous + state.cartContent[key]
+    }, 0)
+  }
+}
+
 export default {
   state,
-  mutations
+  mutations,
+  getters,
+  actions
 }

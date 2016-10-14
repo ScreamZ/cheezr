@@ -2,17 +2,17 @@ const state = {
   'parmigiano': {
     title: 'Parmigiano 30 mesi',
     description: 'Il miglior formaggio del mondo',
-    image: 'http://www.springbankcheesecrowfoot.com/wordpress/wp-content/uploads/2012/12/Parmigiano-Reggiano.jpg'
+    image: 'formaggio.jpg'
   },
   'prosciutto': {
     title: 'Prosciutto di Parma',
     description: 'Il miglior formaggio del mondo',
-    image: 'http://storage.aicod.it/portale/academiabarilla/view/1200/prosciuttodiparmaDOP-34.JPG'
+    image: 'prosciutto.jpg'
   },
   'aceto': {
     title: 'Aceto balsamico di Modena',
     description: 'Il miglior formaggio del mondo',
-    image: 'http://www.visitmodena.it/it/immagini/balsamico.jpg'
+    image: 'aceto.jpg'
   }
 }
 
@@ -22,7 +22,14 @@ const mutations = {
   }
 }
 
+const getters = {
+  productList: state => {
+    return state
+  }
+}
+
 export default {
   state,
-  mutations
+  mutations,
+  getters
 }

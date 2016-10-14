@@ -1,11 +1,12 @@
 <template>
-    <div class="row">
-      <div class="col s12 m4" v-for="product in productList">
+    <div v-if="productList" class="row">
+      <div class="col s12 m4" v-for="(product, key) in productList">
         <product-item
           :title="product.title"
-          :product-id="$key"
+          :product-id="key"
           :supporting-text="product.description"
           :image="product.image"
+          :price="product.price"
         ></product-item>
       </div>
     </div>
@@ -13,20 +14,17 @@
 
 <script>
 import ProductItem from './ProductItem'
-import { productList } from '../vuex/modules/products/getters'
+import { mapGetters } from 'vuex'
 
 export default {
+  name: 'ProductList',
   components: {
-    ProductItem,
+    ProductItem
   },
-  vuex: {
-    getters: {
-      productList
-    }
+  computed: {
+    ...mapGetters([
+      'productList'
+    ])
   }
 }
 </script>
-
-<style>
-
-</style>

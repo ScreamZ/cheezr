@@ -1,17 +1,21 @@
+// The Vue build version to load with the `import` command
+// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
-import VueMaterialComponents from 'vue-material-components'
 import App from './App'
-import store from './vuex/store'
 import router from './services/router'
-
+import store from './vuex/store'
+import jQuery from 'jquery'
+import 'font-awesome/css/font-awesome.css'
+import 'material-design-icons/iconfont/material-icons.css'
 import 'materialize-css/dist/css/materialize.css'
-import 'vue-material-components/dist/vue-material-components.css'
 
-Vue.use(VueMaterialComponents)
+window.jQuery = window.$ = jQuery
+// require('materialize-css/dist/js/materialize')
 
-router.start({
+/* eslint-disable no-new */
+new Vue({
+  router,
   store,
-  components: { App }
-  },
-  'body'
-)
+  el: '#app',
+  render: h => h(App)
+})

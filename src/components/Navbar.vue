@@ -1,11 +1,19 @@
 <template>
-  <md-navbar title="Cheezr" right>
-      <md-nav-item v-link="{ name: 'cart' }"><md-icon left>shopping_cart</md-icon><md-badge alert="items">{{total}}</md-badge></md-nav-item>
-  </md-navbar>
+  <nav>
+    <div class="nav-wrapper">
+      <a class="brand-logo">Cheezr!</a>
+      <ul class="right">
+        <li>
+          <router-link :to="{name: 'cart'}">{{total}} items in cart</router-link>
+        </li>
+      </ul>
+    </div>
+  </nav>
 </template>
 
 <script>
 export default {
+  name: 'Navbar',
   props: ['total'],
   data () {
     return {

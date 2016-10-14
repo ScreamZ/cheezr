@@ -1,23 +1,21 @@
 <template>
   <div class="container">
-    <Navbar :total="totalItemsInCart" ></Navbar>
+    <Navbar :total="totalItemsInCart"></Navbar>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
-import Navbar from './components/Navbar'
-import { totalItemsInCart } from './vuex/modules/cart/getters'
+import Navbar from 'components/Navbar'
+import { mapGetters } from 'vuex'
 
 export default {
+  name: 'App',
   components: {
     Navbar
   },
-  replace: false,
-  vuex: {
-    getters: {
-      totalItemsInCart
-    }
+  computed: {
+    ...mapGetters(['totalItemsInCart'])
   }
 }
 </script>

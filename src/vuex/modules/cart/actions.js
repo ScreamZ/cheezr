@@ -3,14 +3,14 @@ import kuzzle from '../../../services/kuzzle'
 const CART_ID = 'dummy_cart'
 const CARTS_COLLECTION = 'carts'
 
-function syncCartWithServer(id, content, rollbackCb) {
+function syncCartWithServer (id, content, rollbackCb) {
   kuzzle
     .dataCollectionFactory(CARTS_COLLECTION)
     .updateDocument(id, {
       content: content
     }, (err, res) => {
       if (err) {
-        console.error(err);
+        console.error(err)
         // TODO show error in the UI
         if (rollbackCb) {
           rollbackCb()

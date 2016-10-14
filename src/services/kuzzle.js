@@ -1,10 +1,14 @@
-import Kuzzle from 'kuzzle-sdk'
+import Kuzzle from 'kuzzle-sdk/dist/kuzzle'
 import 'kuzzle-sdk-login-oauth-popup'
 // import Config from '../../config/index'
 
 const DEFAULT_INDEX = 'cheezr'
-const KUZZLE_URL = `http://${BACKEND_HOST}:${BACKEND_PORT}`
+const KUZZLE_HOST = 'localhost'
 
-var kuzzle = new Kuzzle(KUZZLE_URL, {defaultIndex: DEFAULT_INDEX});
+window.kuzzle = new Kuzzle(KUZZLE_HOST, {
+  defaultIndex: DEFAULT_INDEX,
+  ioPort: 7512,
+  wsPort: 7513
+})
 
-export default kuzzle;
+export default window.kuzzle
