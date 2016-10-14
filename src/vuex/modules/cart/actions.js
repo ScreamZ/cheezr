@@ -6,7 +6,7 @@ const CARTS_COLLECTION = 'carts'
 function syncCartWithServer (id, content, rollbackCb) {
   kuzzle
     .dataCollectionFactory(CARTS_COLLECTION)
-    .updateDocument(id, {
+    .replaceDocument(id, {
       content: content
     }, (err, res) => {
       if (err) {

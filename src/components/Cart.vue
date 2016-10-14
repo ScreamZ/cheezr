@@ -21,7 +21,7 @@ import ProductItem from './ProductInCartItem'
 
 export default {
   components: {
-    ProductItem,
+    ProductItem
   },
   vuex: {
     getters: {
