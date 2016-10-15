@@ -1,5 +1,5 @@
 <template lang="html">
-  <a @click.prevent="onClick" class="waves-effect waves-light btn">
+  <a @click="clicked" class="waves-effect waves-light btn">
     <i v-if="icon" class="material-icons" v-bind:class="{ 'left': iconLeft, 'right': iconRight }">
       {{icon}}
     </i>
@@ -24,7 +24,13 @@ export default {
   },
   ready () {},
   attached () {},
-  methods: {},
+  methods: {
+    clicked () {
+      if (this.onClick) {
+        this.onClick()
+      }
+    }
+  },
   components: {}
 }
 </script>

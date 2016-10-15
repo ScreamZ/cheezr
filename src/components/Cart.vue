@@ -6,7 +6,7 @@
         :title="productList[key].title"
         :product-id="key"
         :qty="productQty"
-        :image="productList[key].image"
+        :image="productList[key].imageUrl"
       ></product-item>
     </div>
     <router-link :to="{name: 'products'}">
@@ -28,22 +28,29 @@
 <script>
 import MdButton from './Materialize/mdButton'
 import ProductItem from './ProductInCartItem'
+import { mapState } from 'vuex'
 
 export default {
   components: {
     ProductItem,
     MdButton
   },
-  vuex: {
-    getters: {
-      cartList: (state) => {
-        return state.cartContent
-      },
-      productList: (state) => {
-        return state.products
-      }
-    }
+  computed: {
+    ...mapState({
+      cartList: state => state.cart.cartContent,
+      productList: state => state.products
+    })
   }
+  // vuex: {
+  //   getters: {
+  //     cartList: (state) => {
+  //       return state.cartContent
+  //     },
+  //     productList: (state) => {
+  //       return state.products
+  //     }
+  //   }
+  // }
 }
 </script>
 

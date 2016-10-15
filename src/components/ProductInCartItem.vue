@@ -1,7 +1,7 @@
 <template>
   <ul class="collection">
     <li class="collection-item avatar">
-      <img v-bind:src="image" alt="" class="circle">
+      <img v-bind:src="localImgUrl" alt="" class="circle">
       <span class="title">{{title}}</span>
     </li>
   </ul>
@@ -24,6 +24,11 @@ export default {
   props: ['title', 'qty', 'productId', 'image'],
   methods: {
     ...mapActions(['addProductToCart', 'removeProductFromCart'])
+  },
+  computed: {
+    localImgUrl () {
+      return 'static/' + this.image
+    }
   }
 }
 </script>

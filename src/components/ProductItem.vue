@@ -42,7 +42,6 @@ export default {
   methods: {
     ...mapActions(['addProductToCart']),
     addToCart () {
-      console.log('hsy hp!')
       this.addProductToCart(this.productId)
     }
   }
