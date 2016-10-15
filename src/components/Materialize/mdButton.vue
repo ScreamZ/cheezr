@@ -1,5 +1,5 @@
 <template lang="html">
-  <a class="waves-effect waves-light btn">
+  <a @click.prevent="onClick" class="waves-effect waves-light btn">
     <i v-if="icon" class="material-icons" v-bind:class="{ 'left': iconLeft, 'right': iconRight }">
       {{icon}}
     </i>
@@ -9,7 +9,7 @@
 
 <script>
 export default {
-  props: ['text', 'icon', 'iconAlign'],
+  props: ['text', 'icon', 'iconAlign', 'onClick'],
   data () {
     return {
     }
