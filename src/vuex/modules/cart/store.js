@@ -18,7 +18,7 @@ const mutations = {
     }
   },
   REMOVE_PRODUCT_FROM_CART (state, payload) {
-    if (state.cartContent[payload.id] > 0) {
+    if (state.cartContent[payload.id] === 1) {
       Vue.delete(state.cartContent, payload.id)
     } else {
       state.cartContent[payload.id] -= payload.qty

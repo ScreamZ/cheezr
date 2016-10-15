@@ -3,24 +3,22 @@
     <li class="collection-item avatar">
       <img v-bind:src="localImgUrl" alt="" class="circle">
       <span class="title">{{title}}</span>
+      <div class="secondary-content">
+        <span class="qty-btn" @click="removeProductFromCart(productId)">-</span>
+        &nbsp;
+        <span>{{qty}}</span>
+        &nbsp;
+        <span class="qty-btn" @click="addProductToCart(productId)">+</span>
+      </div>
     </li>
   </ul>
-  <!-- <md-collection-item class="avatar">
-    
-    <a slot="secondary-content">
-      <qty-buttons
-        :qty="qty"
-        v-on:increase="addProductToCart(productId)"
-        v-on:decrease="removeProductFromCart(productId)"
-      ></qty-buttons>
-    </a>
-  </md-collection-item> -->
 </template>
 
 <script>
 import { mapActions } from 'vuex'
 
 export default {
+  name: 'ProductInCart',
   props: ['title', 'qty', 'productId', 'image'],
   methods: {
     ...mapActions(['addProductToCart', 'removeProductFromCart'])
@@ -35,7 +33,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-li.md-collection-item {
-  list-style: none;
+.qty-btn {
+  cursor: pointer;
 }
 </style>
