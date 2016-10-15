@@ -10,6 +10,21 @@ const state = {
 }
 
 const mutations = {
+  SET_CART_ID (state, id) {
+    state.cartId = id
+  },
+  SET_DELIVERY_ID (state, id) {
+    state.deliveryId = id
+  },
+  SET_SHIPPED (state, value) {
+    state.shipped = value
+  },
+  SET_PAYMENT_ID (state, id) {
+    state.paymentId = id
+  },
+  SET_CART_CONTENT (state, content) {
+    state.cartContent = content
+  },
   ADD_PRODUCT_TO_CART (state, payload) {
     if (!state.cartContent[payload.id]) {
       Vue.set(state.cartContent, payload.id, payload.qty)

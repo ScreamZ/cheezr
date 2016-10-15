@@ -5,15 +5,19 @@ export const addProductToList = (store, payload) => {
 }
 
 export const fetchProductsFromServer = (store) => {
-  kuzzle
-    .dataCollectionFactory('products')
-    .advancedSearchPromise({})
-    .then(res => {
-      res.documents.forEach(document => {
-        addProductToList(store, {id: document.id, content: document.content})
+  return new Promise((resolve, reject) => {
+    kuzzle
+      .dataCollectionFactory('products')
+      .advancedSearchPromise({})
+      .then(res => {
+        res.documents.forEach(document => {
+          addProductToList(store, {id: document.id, content: document.content})
+        })
+        resolve()
       })
-    })
-    .catch(err => {
-      console.error(err.message)
-    })
+      .catch(err => {
+        console.error(err.message)
+        reject()
+      })
+  })
 }

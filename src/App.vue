@@ -18,10 +18,13 @@ export default {
     ...mapGetters(['totalItemsInCart'])
   },
   methods: {
-    ...mapActions(['fetchProductsFromServer'])
+    ...mapActions(['fetchProductsFromServer', 'initCart'])
   },
   created: function () {
     this.fetchProductsFromServer()
+      .then(() => {
+        this.initCart()
+      })
   }
 }
 </script>
