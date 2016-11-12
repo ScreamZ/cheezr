@@ -1,6 +1,6 @@
 <template lang="html">
-  <a @click="clicked" class="waves-effect waves-light btn">
-    <i v-if="icon" class="material-icons" v-bind:class="{ 'left': iconLeft, 'right': iconRight }">
+  <a @click="$emit('click', $event)" class="waves-effect waves-light btn">
+    <i v-if="icon" class="material-icons" :class="{ 'left': iconLeft, 'right': iconRight }">
       {{icon}}
     </i>
     {{text}}
@@ -21,19 +21,6 @@ export default {
     iconRight () {
       return this.iconAlign === 'right'
     }
-  },
-  ready () {},
-  attached () {},
-  methods: {
-    clicked () {
-      if (this.onClick) {
-        this.onClick()
-      }
-    }
-  },
-  components: {}
+  }
 }
 </script>
-
-<style lang="css">
-</style>

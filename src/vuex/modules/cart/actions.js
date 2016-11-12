@@ -1,5 +1,11 @@
 import kuzzle from '../../../services/kuzzle'
+import braintree from 'braintree-web'
 import * as localStorage from 'services/localStorage'
+import bluebird from 'bluebird'
+
+// Promisify the lib
+bluebird.promisifyAll(braintree.client)
+bluebird.promisifyAll(braintree.paypal)
 
 const LOCAL_CART_ID = 'cart'
 const CARTS_COLLECTION = 'carts'
@@ -69,27 +75,42 @@ export const initCartFromServer = (store) => {
 }
 
 export const addProductToCart = function (store, id) {
-  store.commit('ADD_PRODUCT_TO_CART', {id, qty: 1})
+  store.commit('ADD_PRODUCT_TO_CART', { id, qty: 1 })
 
   syncCartWithServer(store.state, () => {
-    store.commit('REMOVE_PRODUCT_FROM_CART', {id, qty: 1})
+    store.commit('REMOVE_PRODUCT_FROM_CART', { id, qty: 1 })
   })
 }
 
 export const removeProductFromCart = function (store, id) {
-  store.commit('REMOVE_PRODUCT_FROM_CART', {id, qty: 1})
+  store.commit('REMOVE_PRODUCT_FROM_CART', { id, qty: 1 })
 
   syncCartWithServer(store.state, () => {
-    store.commit('ADD_PRODUCT_TO_CART', {id, qty: 1})
+    store.commit('ADD_PRODUCT_TO_CART', { id, qty: 1 })
   })
 }
 
 export const updateProductInCart = function (store, id, qty) {
-  let oldQty = store.state[id]
+  let oldQty = store.state[ id ]
 
-  store.commit('UPDATE_PRODUCT_IN_CART', {id, qty})
+  store.commit('UPDATE_PRODUCT_IN_CART', { id, qty })
 
   syncCartWithServer(store.state, () => {
-    store.commit('UPDATE_PRODUCT_IN_CART', {id, qty: oldQty})
+    store.commit('UPDATE_PRODUCT_IN_CART', { id, qty: oldQty })
   })
+}
+
+/**
+ * Generate an Braintree client token and bind it to a paypal pipe that will be used to generate transaction.
+ *
+ * @param store
+ * @returns {Promise} Resolve with the paypalInstance
+ */
+export const getBraintreePaypalInstance = function (store) {
+  const requestParams = { controller: 'kuzzle-plugin-braintree/braintree', action: 'generateClientToken' }
+
+  return window.kuzzle.queryPromise(requestParams, {})
+    .then(({ result: kuzzleResult }) => braintree.client.createAsync({ authorization: kuzzleResult.clientToken }))
+    .then(client => braintree.paypal.createAsync({ client }))
+    .then(paypalInstance => bluebird.promisifyAll(paypalInstance))
 }

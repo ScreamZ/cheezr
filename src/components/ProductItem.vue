@@ -18,7 +18,7 @@
         text="Add to Cart"
         icon="shopping_cart"
         icon-align="left"
-        :onClick="addToCart"
+        @click.prevent="addToCart"
       ></md-button>
     </div>
   </div>
