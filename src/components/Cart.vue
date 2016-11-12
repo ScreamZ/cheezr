@@ -84,6 +84,7 @@
         })
         .catch(err => {
           // TODO : Handle errors
+          console.error(err)
         })
     }
   }
